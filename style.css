@@ -1,0 +1,135 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #ced7f1;
+    color: #1f2937;
+    display: flex;
+    justify-content: center;
+    padding: 40px 15px;
+}
+
+.contenedor {
+    width: 100%;
+    max-width: 680px;
+    background-color: #ffffff;
+    border: 2px dashed ;
+    border-radius: 14px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: 0 6px 16px rgba(219, 39, 119, 0.15);
+}
+
+.titulo {
+    text-align: center;
+    font-size: 1.15rem;
+    color:#00289e ;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.fila {
+    background-color: #fdf2f8;
+    border: 1px solid #819ced;
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 1.1rem;
+}
+
+#boton {
+    background-color: #1644cf;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 14px;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 1.05rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+#boton:hover {
+    background-color: #001d75;
+}
+
+#boton:active {
+    transform: scale(0.97);
+}
+
+.caja {
+    background-color: #fafafa;
+    border: 2px dashed #94a3b8;
+    border-radius: 10px;
+    padding: 16px;
+    opacity: 0.4;
+    transition: all 0.3s ease;
+}
+
+.caja h2 {
+    font-size: 1rem;
+    margin-bottom: 6px;
+    color: #4b5563;
+}
+
+.texto {
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+.caja.activa {
+    opacity: 1;
+    border: 2px solid #059669;
+    border-style: solid;
+    background-color: #ecfdf5;
+    transform: scale(1.01);
+    box-shadow: 0 4px 12px rgba(5, 150, 105, 0.15);
+}
+
+.caja.activa h2 {
+    color: #047857;
+}
+
+.caja ul {
+    margin-top: 10px;
+    padding-left: 20px;
+    font-size: 0.92rem;
+    line-height: 1.5;
+}
+
+.linea {
+    border: none;
+    border-top: 1px solid #fbcfe8;
+    margin: 5px 0;
+}
+
+.footer {
+    font-size: 0.88rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: #4b5563;
+}
+
+.etiqueta {
+    font-family: "Courier New", Courier, monospace;
+    background-color: #fdf2f8;
+    border: 1px solid #f472b6;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: rgb(139, 92, 246);
+    text-decoration: none;
+}
+
+a.etiqueta:hover {
+    background-color: #f472b6;
+    color: #ffffff;
+}

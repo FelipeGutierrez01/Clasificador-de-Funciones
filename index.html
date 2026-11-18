@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clasificador de Funciones</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="contenedor">
+        <h1 class="titulo">CLASIFICADOR DE FUNCIONES: f(x) = bx + c</h1>
+
+        <div class="fila">
+            <strong>b</strong> = [ <span id="b">0</span> ]
+        </div>
+
+        <div class="fila">
+            <strong>c</strong> = [ <span id="c">0</span> ]
+        </div>
+
+        <button id="boton" type="button">[ Generar / Cambiar ]</button>
+
+        <section id="lineal" class="caja">
+            <h2>LINEAL</h2>
+            <p class="texto">Muestra la lista de propiedades de la Función Lineal si cumple la condición (<strong>c = 0</strong>).</p>
+            <ul id="listalineal"></ul>
+        </section>
+
+        <section id="afin" class="caja">
+            <h2>AFÍN</h2>
+            <p class="texto">Muestra la lista de propiedades de la Función Afín si cumple la condición (<strong>c &ne; 0</strong>).</p>
+            <ul id="listaafin"></ul>
+        </section>
+
+        <hr class="linea">
+
+        <footer class="footer">
+            <p><strong>ENLACE:</strong> GeoGebra Clásico ( <a href="https://www.geogebra.org/classic" target="_blank" rel="noopener noreferrer" class="etiqueta">geogebra.org/classic</a> )</p>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
