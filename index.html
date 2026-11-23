@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clasificador de Funciones</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://www.geogebra.org/apps/deployggb.js"></script>
 </head>
 <body>
 
@@ -23,21 +24,29 @@
 
         <section id="lineal" class="caja">
             <h2>LINEAL</h2>
-            <p class="texto">Muestra la lista de propiedades de la Función Lineal si cumple la condición (<strong>c = 0</strong>).</p>
+            <p class="texto">Cuando c es 0 y b no es 0: pasa por el (0, 0).</p>
             <ul id="listalineal"></ul>
         </section>
 
         <section id="afin" class="caja">
-            <h2>AFÍN</h2>
-            <p class="texto">Muestra la lista de propiedades de la Función Afín si cumple la condición (<strong>c &ne; 0</strong>).</p>
+            <h2>AFÍN / CONSTANTE</h2>
+            <p class="texto">Cuando c no es 0: si b es 0 queda constante, si no es afín.</p>
             <ul id="listaafin"></ul>
+        </section>
+
+        <section id="nula" class="caja">
+            <h2>SIN FUNCIÓN</h2>
+            <p class="texto">Cuando b es 0 y c es 0: no hay función.</p>
+            <ul id="listanula"></ul>
         </section>
 
         <hr class="linea">
 
-        <footer class="footer">
-            <p><strong>ENLACE:</strong> GeoGebra Clásico ( <a href="https://www.geogebra.org/classic" target="_blank" rel="noopener noreferrer" class="etiqueta">geogebra.org/classic</a> )</p>
-        </footer>
+        <section class="grafico">
+            <h2>GRÁFICO EN GEOGEBRA</h2>
+            <div id="ggb"></div>
+        </section>
+
     </main>
 
     <script src="script.js"></script>

@@ -2,75 +2,102 @@ const spanB = document.querySelector("#b");
 const spanC = document.querySelector("#c");
 const cajaLineal = document.querySelector("#lineal");
 const cajaAfin = document.querySelector("#afin");
+const cajaNula = document.querySelector("#nula");
 const listaLineal = document.querySelector("#listalineal");
 const listaAfin = document.querySelector("#listaafin");
+const listaNula = document.querySelector("#listanula");
 const boton = document.querySelector("#boton");
 
-function generar() {
-    let b = Math.floor(Math.random() * 21) - 10;
-    let c = Math.floor(Math.random() * 21) - 10;
+let apiGgb = null;
+let bActual = 0;
+let cActual = 0;
 
+let appGgb = new GGBApplet({
+    appName: "graphing",
+    width: 620,
+    height: 360,
+    showToolBar: false,
+    showAlgebraInput: false,
+    showMenuBar: false,
+    enableRightClick: false,
+    appletOnLoad: function (api) {
+        apiGgb = api;
+        graficar(bActual, cActual);
+    }
+}, true);
+
+function graficar(b, c) {
+    if (apiGgb === null) {
+        return;
+    }
+
+    apiGgb.reset();
+
+    if (b === 0) {
+        if (c === 0) {
+            apiGgb.evalCommand("Delete(f)");
+        } else {
+            apiGgb.evalCommand("f(x) = " + c);
+        }
+    } else if (c === 0) {
+        apiGgb.evalCommand("f(x) = " + b + "x");
+    } else if (c > 0) {
+        apiGgb.evalCommand("f(x) = " + b + "x + " + c);
+    } else {
+        apiGgb.evalCommand("f(x) = " + b + "x - " + Math.abs(c));
+    }
+}
+
+function generar() {
+    let b = Math.floor(Math.random() * 7) - 3;
+    let c = Math.floor(Math.random() * 7) - 3;
+
+    bActual = b;
+    cActual = c;
     spanB.textContent = b;
     spanC.textContent = c;
 
     listaLineal.innerHTML = "";
     listaAfin.innerHTML = "";
+    listaNula.innerHTML = "";
+    cajaLineal.className = "caja";
+    cajaAfin.className = "caja";
+    cajaNula.className = "caja";
 
-    let pendiente = "";
-    if (b > 0) {
-        pendiente = "Creciente (b = " + b + " > 0)";
-    } else {
-        if (b < 0) {
-            pendiente = "Decreciente (b = " + b + " < 0)";
+    if (b === 0) {
+        if (c === 0) {
+            cajaNula.className = "caja error";
+            listaNula.innerHTML = "<li><strong>Resultado:</strong> No hay función (b = 0 y c = 0)</li>";
         } else {
-            pendiente = "Constante (b = 0)";
+            cajaAfin.className = "caja activa";
+            listaAfin.innerHTML =
+                "<li><strong>Tipo:</strong> Constante</li>" +
+                "<li><strong>Fórmula:</strong> f(x) = " + c + "</li>" +
+                "<li><strong>Corte Eje Y:</strong> (0, " + c + ")</li>";
         }
-    }
-
-    if (c === 0) {
+    } else if (c === 0) {
         cajaLineal.className = "caja activa";
-        cajaAfin.className = "caja";
-
-        let item1 = document.createElement("li");
-        item1.innerHTML = "<strong>Expresión:</strong> f(x) = " + b + "x";
-        listaLineal.appendChild(item1);
-
-        let item2 = document.createElement("li");
-        item2.innerHTML = "<strong>Gráfica:</strong> Línea recta continua que pasa por el origen (0, 0).";
-        listaLineal.appendChild(item2);
-
-        let item3 = document.createElement("li");
-        item3.innerHTML = "<strong>Pendiente:</strong> " + pendiente + ".";
-        listaLineal.appendChild(item3);
-
+        listaLineal.innerHTML =
+            "<li><strong>Tipo:</strong> Lineal</li>" +
+            "<li><strong>Fórmula:</strong> f(x) = " + b + "x</li>" +
+            "<li><strong>Corte:</strong> Pasa por (0, 0)</li>";
     } else {
         cajaAfin.className = "caja activa";
-        cajaLineal.className = "caja";
-
-        let signo = "";
-        if (c > 0) {
-            signo = "+ " + c;
-        } else {
+        let signo = "+ " + c;
+        if (c < 0) {
             signo = "- " + Math.abs(c);
         }
-
-        let item4 = document.createElement("li");
-        item4.innerHTML = "<strong>Expresión:</strong> f(x) = " + b + "x " + signo;
-        listaAfin.appendChild(item4);
-
-        let item5 = document.createElement("li");
-        item5.innerHTML = "<strong>Corte Eje Y:</strong> Interseca en las coordenadas (0, " + c + ").";
-        listaAfin.appendChild(item5);
-
-        let item6 = document.createElement("li");
-        item6.innerHTML = "<strong>Pendiente:</strong> " + pendiente + ".";
-        listaAfin.appendChild(item6);
-
-        let item7 = document.createElement("li");
-        item7.innerHTML = "<strong>Traslación:</strong> Desplazamiento vertical de " + c + " unidades respecto al origen.";
-        listaAfin.appendChild(item7);
+        listaAfin.innerHTML =
+            "<li><strong>Tipo:</strong> Afín</li>" +
+            "<li><strong>Fórmula:</strong> f(x) = " + b + "x " + signo + "</li>" +
+            "<li><strong>Corte Eje Y:</strong> (0, " + c + ")</li>";
     }
+
+    graficar(b, c);
 }
 
 boton.addEventListener("click", generar);
-generar();
+window.addEventListener("load", function () {
+    generar();
+    appGgb.inject("ggb");
+});
