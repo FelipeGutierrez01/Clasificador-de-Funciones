@@ -12,6 +12,8 @@ let apiGgb = null;
 let bActual = 0;
 let cActual = 0;
 
+// Inicializar Grafico GeoGebra
+
 let appGgb = new GGBApplet({
     appName: "graphing",
     width: 620,
@@ -48,6 +50,8 @@ function graficar(b, c) {
     }
 }
 
+// Generar valores aleatorios y actualizar la interfaz
+
 function generar() {
     let b = Math.floor(Math.random() * 7) - 3;
     let c = Math.floor(Math.random() * 7) - 3;
@@ -64,10 +68,13 @@ function generar() {
     cajaAfin.className = "caja";
     cajaNula.className = "caja";
 
+// Determinar el tipo de función y actualizar la interfaz
+
     if (b === 0) {
         if (c === 0) {
             cajaNula.className = "caja error";
             listaNula.innerHTML = "<li><strong>Resultado:</strong> No hay función (b = 0 y c = 0)</li>";
+            alert("No hay función: b = 0 y c = 0");
         } else {
             cajaAfin.className = "caja activa";
             listaAfin.innerHTML =

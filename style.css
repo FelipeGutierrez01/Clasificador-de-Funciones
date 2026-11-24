@@ -1,52 +1,70 @@
-* {
-    box-sizing: border-box;
+/* Reset global */
+*{
+  box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+/* Estilos base */
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #dbeafe;
-    color: #1e293b;
-    display: flex;
-    justify-content: center;
-    padding: 40px 15px;
+    font-family:fantasy, sans-serif;
+    background-color: #0b101b;
+    color: #cbd5e1;
+    padding: 30px 45px;
 }
 
+/* Encabezado */
+.encabezado {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #7dd3fc;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* Contenedor centrado */
 .contenedor {
     width: 100%;
     max-width: 680px;
-    background-color: #ffffff;
-    border: 2px dashed #1d4ed8;
+    margin: 0 auto;
+    background-color: #111827;
+    border: 2px dashed #8b5cf6;
     border-radius: 14px;
     padding: 25px;
     display: flex;
+    justify-content: center;
+    align-content: center;
     flex-direction: column;
     gap: 15px;
-    box-shadow: 0 6px 16px rgba(29, 78, 216, 0.16);
+    box-shadow: 0 0 12px rgba(139, 92, 246, 0.18);
 }
 
+/* Título interno */
 .titulo {
     text-align: center;
     font-size: 1.15rem;
-    color: #1e40af;
+    color: #67e8f9;
     font-weight: bold;
     margin-bottom: 5px;
 }
 
+/* Filas de datos */
 .fila {
-    background-color: #eff6ff;
-    border: 1px solid #93c5fd;
+    background-color: #0f172a;
+    border: 1px solid #0891b2;
     border-radius: 8px;
     padding: 12px;
     text-align: center;
     font-family: "Courier New", Courier, monospace;
     font-size: 1.1rem;
+    color: #a5f3fc;
 }
 
+/* Botón principal */
 #boton {
-    background-color: #1d4ed8;
-    color: #ffffff;
+    background-color: #be185d;
+    color: #f8fafc;
     border: none;
     border-radius: 8px;
     padding: 14px;
@@ -54,63 +72,69 @@ body {
     font-size: 1.05rem;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.2s, transform 0.1s;
+    box-shadow: 0 0 8px rgba(190, 24, 93, 0.25);
+    transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
 }
 
 #boton:hover {
-    background-color: #1e40af;
+    background-color: #db2777;
+    box-shadow: 0 0 12px rgba(219, 39, 119, 0.35);
 }
 
 #boton:active {
     transform: scale(0.97);
 }
 
+/* Cajas y textos */
 .caja {
-    background-color: #f8fafc;
-    border: 2px dashed #94a3b8;
+    background-color: #131c31;
+    border: 2px dashed #eab308;
     border-radius: 10px;
     padding: 16px;
-    opacity: 0.45;
+    opacity: 0.55;
     transition: all 0.25s ease;
 }
 
 .caja h2 {
     font-size: 1rem;
     margin-bottom: 6px;
-    color: #475569;
+    color: #fde047;
 }
 
 .texto {
     font-size: 0.9rem;
-    color: #64748b;
+    color: #cbd5e1;
 }
 
+/* Caja activa */
 .caja.activa {
     opacity: 1;
-    border: 2px solid #1d4ed8;
+    border: 2px solid #14b8a6;
     border-style: solid;
-    background-color: #eff6ff;
+    background-color: #0d2626;
     transform: scale(1.01);
-    box-shadow: 0 4px 12px rgba(29, 78, 216, 0.16);
+    box-shadow: 0 0 10px rgba(20, 184, 166, 0.22);
 }
 
 .caja.activa h2 {
-    color: #1e3a8a;
+    color: #5eead4;
 }
 
+/* Caja de error */
 .caja.error {
     opacity: 1;
-    border: 2px solid #e11d48;
+    border: 2px solid #f43f5e;
     border-style: solid;
-    background-color: #ffe4e6;
+    background-color: #2a0f1d;
     transform: scale(1.01);
-    box-shadow: 0 4px 12px rgba(225, 29, 72, 0.14);
+    box-shadow: 0 0 10px rgba(244, 63, 94, 0.22);
 }
 
 .caja.error h2 {
-    color: #be123c;
+    color: #fda4af;
 }
 
+/* Listas y separador */
 .caja ul {
     margin-top: 10px;
     padding-left: 20px;
@@ -120,10 +144,11 @@ body {
 
 .linea {
     border: none;
-    border-top: 1px solid #bfdbfe;
+    border-top: 1px solid #38bdf8;
     margin: 5px 0;
 }
 
+/* Gráfico (#ggb) */
 .grafico {
     display: flex;
     flex-direction: column;
@@ -132,15 +157,24 @@ body {
 
 .grafico h2 {
     font-size: 1rem;
-    color: #1e40af;
+    color: #c084fc;
 }
 
 #ggb {
     width: 100%;
     display: flex;
     justify-content: center;
-    border: 1px solid #93c5fd;
+    border: 1px solid #a855f7;
     border-radius: 10px;
     overflow: hidden;
-    background-color: #ffffff;
+    background-color: #0f172a;
+    box-shadow: 0 0 8px rgba(168, 85, 247, 0.16);
+}
+
+/* Pie de página */
+.footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #94a3b8;
 }
